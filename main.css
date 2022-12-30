@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    /* background-color: #22252d; */
+    background-color:  rgb(5, 15, 24);
+    width: 100%;
+    max-width: 375px;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 5px solid rgb(75, 75, 75);
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    margin: 0.25rem;
+    flex: 1 1 0%;
+    min-height: 200px;
+    padding: 1.5rem;
+    color: rgba(245, 245, 245, 0.818);
+    color: #048f11;
+    background-color: #22252d;
+    border: 5px solid  rgb(75, 75, 75);
+    border-radius: 1.5rem;
+}
+
+.display .input {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.display .output {
+    font-size: 3.0rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.display .output .error {
+    color: #c14c4c;
+}
+
+.display .operator {
+    color: #c14c4c;
+}
+
+.display .brackets, 
+.display .percent {
+    color: #048f11;
+}
+
+.keys {
+    background-color: #292d36;
+    padding: 1.5rem;
+    /* border-radius: 1.5rem 1.5rem 0 0; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1rem;
+    background-color: rgb(5, 15, 24);
+    box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.keys .key {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    height: 0;
+    padding-top: 100%;
+    background-color: #262933;
+    border: 1px solid #3f444e;
+    border-radius: 1rem;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.keys .key span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(245, 245, 245, 0.818);
+
+}
+
+.keys .key:hover {
+    box-shadow: inset 0px 0px 8px rgba(0,0,0,0.2);
+}
+
+.keys .key.operator span {
+    color: #c14c4c;
+}
+
+.keys .key.action span {
+    color: #048f11;
+}
