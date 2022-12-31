@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Calculator</title>
+	<link rel="icon" type="image/svg+xml" href="/images/favicon.png">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<link 
 		rel="stylesheet" 
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
@@ -12,18 +15,20 @@
 		referrerpolicy="no-referrer"
 	/>
 	<link rel="stylesheet" href="main.css" />
-	<title>Calculator</title>
-</head>
-<body>
 	
+</head>
+
+<body>
+	<header>
+		<h1>javascript calc</h1>
+	</header>
+
 	<div class="app">
-
 		<div class="calculator">
-
 			<div class="display">
 				<div class="content">
-					<div class="input">120 <span class="operator">x</span> 100</span></div>
-					<div class="output">12,000</div>
+					<div class="input"></div>
+					<div class="output">0</div>
 				</div>
 			</div>
 
@@ -109,10 +114,54 @@
 					<span>=</span>
 				</div>
 			</div>
+		</div>
+	</div>
 
+	<footer>
+		<div open class="footer-left">
+			<img src="images/applause_icon.png" onclick="openModal()" alt="credits to creators">
+			<span>&nbspcredits</span>
+			<dialog  class="modal" id="modal">
+				<h2>credits</h2>
+				<br>
+				<div>
+					<a target="_blank" href="https://www.youtube.com/watch?v=_x8mNUBhLSk">Build a Calculator App in HTML, CSS & JavaScript 2022</a> by <a target="_blank" href="https://www.youtube.com/@TylerPotts">Tyler Potts</a>
+				</div>
+				<br>
+				<div>
+					<a target="_blank" href="https://unsplash.com/photos/h3kuhYUCE9A">background art</a> by <a target="_blank" href="https://unsplash.com/@dancristianpaduret">Dan Cristian Pădureț</a>
+				</div>
+				<br>	
+				<div>
+					<a target="_blank" href="https://www.iconfinder.com/icons/1298778/youtube_play_video_icon">youtube icon</a> by <a target="_blank" href="https://www.iconfinder.com/">iconfinder.com</a>
+				</div>
+				<br>	
+				<div>
+					<a target="_blank" href="https://icons8.com/icon/12780/calculator">favicon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+				</div>
+				<br>	
+				<div>
+					<a target="_blank" href="https://icons8.com/icon/12802/applause">applause</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+				</div>
+				<br>
+				<button class="button close-button" id="close-button">close</button>
+			</dialog>
 		</div>
 
-	</div>
+		<div class="footer-middle">
+			<a target="_blank" href="https://www.youtube.com/watch?v=_x8mNUBhLSk">
+				<img src="images/youtube_icon.png" alt="youtube tutorial. Build a Calculator App in HTML, CSS & JavaScript 2022">
+			</a>
+			<span>&nbsp;tutorial</span>
+		</div>
+
+		<div class="footer-right">
+			<span>{code}&nbsp;</span>
+			<a target="_blank" href="https://github.com/6str/calculator">
+				<img src="images/github_icon.png" alt="github code repository for this app">
+			</a>
+		</div>
+    </footer>
 
 	<script src="main.js"></script>
 </body>

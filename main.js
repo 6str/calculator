@@ -37,6 +37,26 @@ document.addEventListener("keydown", (event) => {
     else if (event.key === 'Escape') keyPress('clear')  
 });
 
+// listeners for modal
+const modal = document.querySelector('#modal')
+// const openModal = document.querySelector('.openModal')
+const closeModal = document.querySelector('.close-button')
+
+function openModal() {
+    console.log("open modal")
+    modal.showModal()
+    closeModal.focus()
+    
+}
+
+// openModal.addEventListener('click', () => {
+//     modal.showModal();
+// })
+
+closeModal.addEventListener('click', () => {
+    modal.close();
+})
+
 
 // process button / key presses
 function keyPress(value) {

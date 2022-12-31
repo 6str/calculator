@@ -5,15 +5,94 @@
     font-family: sans-serif;
 }
 
+@font-face {
+    font-family: 'archisticonormal';
+    src: url('fonts/Archistico_Simple-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'archisticobold';
+    src: url('fonts/Archistico_Bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: bold;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(6px);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    padding: 30px 0;
+}
+
+header h1 {
+    font-size: 80px;
+    font-weight: normal;
+    font-family: 'archisticonormal', Arial, sans-serif;
+    text-align : center;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 120px;
+    user-select: none;
+}
+
+footer span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #048f11;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footer-left img,
+.footer-middle img,
+.footer-right img {
+    width: 40px;
+    vertical-align: middle;
+}
+
+
 .app {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding-bottom: 130px;      /* >= footer height */
 }
 
+
 .calculator {
-    /* background-color: #22252d; */
     background-color:  rgb(5, 15, 24);
     width: 100%;
     max-width: 375px;
@@ -22,7 +101,9 @@
     flex-direction: column;
     border-radius: 1.5rem;
     overflow: hidden;
-    border: 5px solid rgb(75, 75, 75);
+    background: linear-gradient(rgb(5, 15, 25), rgb(5, 15, 25)) padding-box,
+                linear-gradient(to right, rgb(140, 140, 140), rgb(88, 88, 88)) border-box;
+    border: 4px solid transparent;
 }
 
 .display {
@@ -34,11 +115,11 @@
     flex: 1 1 0%;
     min-height: 200px;
     padding: 1.5rem;
-    color: rgba(245, 245, 245, 0.818);
     color: #048f11;
-    background-color: #22252d;
-    border: 5px solid  rgb(75, 75, 75);
     border-radius: 1.5rem;
+    background: linear-gradient(rgb(5, 15, 25), rgb(5, 15, 25)) padding-box,
+    linear-gradient(to right, rgb(140, 140, 140), rgb(88, 88, 88)) border-box;
+    border: 4px solid transparent;
 }
 
 .display .input {
@@ -50,8 +131,6 @@
     font-size: 3.0rem;
     font-weight: 700;
     width: 100%;
-    max-width: 100%;
-    overflow: auto;
 }
 
 .display .output .error {
@@ -100,7 +179,6 @@
     font-size: 2rem;
     font-weight: 700;
     color: rgba(245, 245, 245, 0.818);
-
 }
 
 .keys .key:hover {
@@ -114,3 +192,29 @@
 .keys .key.action span {
     color: #048f11;
 }
+
+.modal {
+    width: 375px;
+    border-radius: 15px;
+    box-shadow: -1px 1px 2px rgb(109, 103, 103) ;
+    padding:10px;
+    background: linear-gradient(0deg, rgba(142, 144, 142, 0.821) 0%, rgb(175, 219, 242) 53%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal::backdrop {
+    background: linear-gradient(45deg, rgb(103, 88, 88), rgb(150, 150, 237));
+    opacity: .5;
+}
+
+.close-button {
+    padding: 10px;
+    border-radius: 10px;
+    border:2px solid black;
+    font-size: 16px;
+    font-weight: bold;
+}
+  
