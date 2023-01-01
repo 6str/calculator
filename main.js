@@ -1,6 +1,9 @@
 const keys = document.querySelectorAll('.key')
 const display_input = document.querySelector('.display .input')
 const display_output = document.querySelector('.display .output')
+const modal = document.querySelector('#modal')
+const closeModal = document.querySelector('.close-button')
+
 
 let input = ""
 let input2 = "" 
@@ -37,26 +40,15 @@ document.addEventListener("keydown", (event) => {
     else if (event.key === 'Escape') keyPress('clear')  
 });
 
-// listeners for modal
-const modal = document.querySelector('#modal')
-// const openModal = document.querySelector('.openModal')
-const closeModal = document.querySelector('.close-button')
+// listener close modal button
+closeModal.addEventListener('click', () => {
+    modal.close();
+})
 
 function openModal() {
-    console.log("open modal")
     modal.showModal()
     closeModal.focus()
-    
 }
-
-
-// function biggestFont(text, size) {
-//     const canvas = document.createElement("canvas");
-//     const context = canvas.getContext('2d');
-//     let text = context.measureText(data);
-//     console.log(text.width);
-// }
-
 
 function setOutput(data) {
     if(data.length < 14) {
@@ -68,14 +60,6 @@ function setOutput(data) {
     }
     display_output.innerHTML = data;
 }
-
-// openModal.addEventListener('click', () => {
-//     modal.showModal();
-// })
-
-closeModal.addEventListener('click', () => {
-    modal.close();
-})
 
 
 // process button / key presses
