@@ -33,12 +33,13 @@ body {
 header {
     display: flex;
     justify-content: center;
-    color: whitesmoke;
+    color: #28cb38;
     padding: 30px 0;
 }
 
 header h1 {
     font-size: 80px;
+    font-size: clamp(50px, 12vw, 80px);
     font-weight: normal;
     font-family: 'archisticonormal', Arial, sans-serif;
     text-align : center;
@@ -75,6 +76,7 @@ footer img:hover {
     align-items: center;
     font-weight: bold;
     text-decoration: none;
+    padding: 0 15px
 }
 
 .footer-left img,
@@ -122,15 +124,26 @@ footer img:hover {
     border: 4px solid transparent;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 325px;
+    height: 150px;
+}
+
 .display .input {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    max-height: 100px;
+    overflow-wrap: break-word;
 }
 
 .display .output {
     font-size: 3.0rem;
     font-weight: 700;
     width: 100%;
+    overflow-wrap: break-word;
 }
 
 .display .output .error {
