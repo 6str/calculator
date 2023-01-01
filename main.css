@@ -39,7 +39,7 @@ header {
 
 header h1 {
     font-size: 80px;
-    font-size: clamp(50px, 12vw, 80px);
+    font-size: clamp(40px, 12vw, 80px);
     font-weight: normal;
     font-family: 'archisticonormal', Arial, sans-serif;
     text-align : center;
