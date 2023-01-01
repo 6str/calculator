@@ -49,6 +49,26 @@ function openModal() {
     
 }
 
+
+// function biggestFont(text, size) {
+//     const canvas = document.createElement("canvas");
+//     const context = canvas.getContext('2d');
+//     let text = context.measureText(data);
+//     console.log(text.width);
+// }
+
+
+function setOutput(data) {
+    if(data.length < 14) {
+        display_output.style.fontSize = "3.0rem"
+    } else if (data.length < 20) {
+        display_output.style.fontSize = "2.0rem"
+    } else {
+        display_output.style.fontSize = "1.5rem"
+    }
+    display_output.innerHTML = data;
+}
+
 // openModal.addEventListener('click', () => {
 //     modal.showModal();
 // })
@@ -76,7 +96,8 @@ function keyPress(value) {
     } else if (value === "=") {
         try {
         let result = evaluate(input2)
-        display_output.innerHTML = formatOutput(result);
+        //display_output.innerHTML = formatOutput(result);
+        setOutput(formatOutput(result)) 
         } catch (error) {
             beep(30, 120, 25)
             console.log("error:", error.message)
