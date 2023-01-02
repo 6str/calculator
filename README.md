@@ -2,19 +2,23 @@
 <!-- Building a simple calculator with HTML, CSS &amp; JavaScript -->
 [Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
 
-Tyler's video caught my eye as a quick fun exercise to try out a few things, but I ended up spending quite a bit of time on it and taking things a bit further.
+Tyler's video caught my eye as a quick fun exercise to try out a few things, but I ended up spending quite a bit of time on it and taking things a bit further.  
 
-Amongst other things, I did some subtle restyling of the calculator, refined the input/output formatting.  
-I went down the rabbit hole with the code behind, hammering out input validation and refining parts of the logic.
+* [javascript calc on vercel](https://calculator-steel-one.vercel.app/)  
+
+Amongst other things, I did some restyling and refined the input/output formatting.  
+I went down the rabbit hole hammering out input validation and refining other parts of the logic.
 There were some tricky problems like how to support negative numbers without adding a +/- key, and catching edge cases like infinity and numbers expressed with exponential notation.  
+</br>
 JavaScript can do a pretty bad job of evaluating some expressions.  
 e.g.  
-* .3 x 10 = 3
-* .3 ÷ .1 = 2.9999999999999996
-
-<!-- ![My Image](images/screenshot.png) -->
-<img src="images/screenshotVid.png" height="400" /> <img src="images/screenshot.png" height="400" />  
-
+* .3 x 10 = 3  
+* .3 ÷ .1 = 2.9999999999999996  
+  
+</br>
+<img src="images/screenshotVid.png" height="400" />&nbsp;&nbsp;<img src="images/screenshot.png" height="400" />  
+</br>
+</br>
 # credits  
 [Tutorial: Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
 
