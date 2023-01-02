@@ -13,7 +13,7 @@ e.g.
 * .3 ÷ .1 = 2.9999999999999996
 
 <!-- ![My Image](images/screenshot.png) -->
-<img src="images/screenshot2.png" height="400" /><img src="images/screenshot.png" height="400" />  
+<img src="images/screenshotVid.png" height="400" /> <img src="images/screenshot.png" height="400" />  
 
 # credits  
 [Tutorial: Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
