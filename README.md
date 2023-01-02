@@ -25,7 +25,7 @@ e.g.
 </br>
 
 # credits  
-[Tutorial: Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
+[YouTube video: Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
 
 <img src="images/background.jpg" width="40" /> [Background art](https://unsplash.com/photos/h3kuhYUCE9A) by [Dan Cristian Pădureț](https://unsplash.com/@dancristianpaduret)  
 
