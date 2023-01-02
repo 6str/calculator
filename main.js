@@ -49,7 +49,24 @@ function openModal() {
     closeModal.focus()
 }
 
-// set output window data. longer output forces smaller fontsize
+// add a space before and after
+function pad(value) {
+    return ' ' + value + ' '
+}
+
+// operators get padding
+function formatValue(value) {
+    if('+*/-'.includes(value)) return pad(value)
+    else return value
+}
+
+// delete a character from input
+function backspace() {
+    input = input.trim().slice(0, -1).trim()
+    display_input.innerHTML = formatInput(input)
+}
+
+// display output text. longer output forces smaller fontsize
 function setOutput(data) {
     if(data.length < 14) {
         display_output.style.fontSize = "3.0rem"
@@ -61,26 +78,10 @@ function setOutput(data) {
     display_output.innerHTML = data;
 }
 
-// operators get padding
-function formatValue(value) {
-    if('+*/-'.includes(value)) return pad(value)
-    else return value
-}
-
-// add a space before and after
-function pad(value) {
-    return ' ' + value + ' '
-}
-
-// delete a character from input
-function backspace() {
-    input = input.trim().slice(0, -1).trim()
-    display_input.innerHTML = formatInput(input)
-}
-
 // evaluate the input expression and set output
 function evaluate(input) {
 
+    // can't evaluate %, and # is a proxy minus - for neg number
     input = input
         .replaceAll('%','/100')
         .replaceAll('#', '-')
@@ -90,7 +91,7 @@ function evaluate(input) {
     try {
         setOutput(formatOutput(eval(input))) //eval can be evil but safe here
     } catch (error) {
-        // if javascript can't evaluate input flash error on screen for 1 second
+        // if javascript can't evaluate the input beep and flash error on output
         beep(30, 120, 25)
         console.error("error:", error.message)
         let temp = display_output.innerHTML
@@ -102,48 +103,50 @@ function evaluate(input) {
 // process button / key presses
 function keyPress(value) {
     
-    console.log("button:", value)
-   
-    if (value === "clear") {
-        input = ""
-        display_input.innerHTML = ""
-        display_output.innerHTML = "0"
-    } else if (value === 'backspace') {
-        backspace()
-        display_input.innerHTML = formatInput(input)
-    } else if (value === "=") {
-        evaluate(input)
-    } else if (value === "brackets") {
-        // open or close bracket?
-        if(input.lastIndexOf('(') <= input.lastIndexOf(')')) {
-            if(!validInput('(')) return
-            input += '('
-        }
-        else {
-            if(!validInput(')')) return
-            input += ')'
-        }
-    
-        display_input.innerHTML = formatInput(input);
+    console.log("keyPress:", value)
+
+    switch (value) {
+        case 'clear':
+            input = ""
+            display_input.innerHTML = ""
+            display_output.innerHTML = "0"
+            break
+        case 'backspace':
+            backspace()
+            display_input.innerHTML = formatInput(input)
+            break
+        case "=":
+            evaluate(input)
+            break
+        case "brackets":
+            // open or close bracket?
+            if(input.lastIndexOf('(') <= input.lastIndexOf(')')) {
+                if(!validInput('(')) return
+                input += '('
+            }
+            else {
+                if(!validInput(')')) return
+                input += ')'
+            }
         
-    } else if (value === '-') {
-        // allow for negative numbers. i.e. a - that follows an operator
-        // # will proxy for - where it's for neg num
-        let previousChunk = input.trim().split(' ').pop()
-        console.log("minus: prevChunk:", previousChunk)
-        let previousChar = previousChunk.trim().split(' ').pop().slice(-1)
+            display_input.innerHTML = formatInput(input);
+            break
+        case '-':
+            // allow for negative numbers. i.e. a - that follows an operator
+            // # will proxy for - where it's for neg num
+            let previousChunk = input.trim().split(' ').pop()
+            let previousChar = previousChunk.trim().split(' ').pop().slice(-1)
 
-        if('+-*/('.includes(previousChar)) value = '#'
+            if('+-*/('.includes(previousChar)) value = '#'
 
-        if(!validInput(value)) return
-        input += formatValue(value);
-        display_input.innerHTML = formatInput(input);
-
-    } else {
-
-        if(!validInput(value)) return
-        input += formatValue(value);
-        display_input.innerHTML = formatInput(input);
+            if(!validInput(value)) return
+            input += formatValue(value);
+            display_input.innerHTML = formatInput(input);
+            break
+        default:
+            if(!validInput(value)) return
+            input += formatValue(value);
+            display_input.innerHTML = formatInput(input);
     }
     
     console.log('input:', input)
@@ -153,7 +156,7 @@ function keyPress(value) {
 function validInput(value) {
     console.log("validInput:", value)
 
-    // the previous character and previous chunk of characters are needed to validate new input
+    // refer to preceeding character and chunk of characters needed to validate new input
     let previousChunk = input.trim().split(' ').pop()
     console.log("previous chunk:", previousChunk)
     let previousChar = previousChunk.trim().split(' ').pop().slice(-1)
@@ -163,8 +166,8 @@ function validInput(value) {
         case '.':   
             // no more than 1 decimal point per chunk
             // decimal can't follow a close bracket
-            if(previousChunk.includes('.')) break //return false
-            if(previousChar === ')') break //return false
+            if(previousChunk.includes('.')) break
+            if(previousChar === ')') break
             return true
         case '%':   
             // must be at the end of a chunk of digits or close bracket
@@ -194,25 +197,25 @@ function validInput(value) {
                 if(')%'.includes(previousChar) && previousChar !== '') break
                 return true
             }
-            // operators can't follow an operator or a minus for neg num # or a . on its own
+            // operators can't follow an operator, a minus for neg num # or a . on its own
             else if('+-*/') {
                 if('+-*/#('.includes(previousChar)) break
                 if(previousChunk === '.') break
                 return true
             }
             else {
-                console.log('unhandled case:', value)
+                console.error('unhandled case:', value)
                 beep(60, 80, 25)
             }
     }
 
-    console.log('invalid input:', value)
+    console.warn('invalid input:', value)
     beep(20, 120, 25)
     setTimeout(() => beep(20, 80, 25), 40)
     return false;
 }
 
-// format the input expression into human readable input HTML
+// generate input HTML for nicely formatted input
 function formatInput(input) {
     
     let formattedInput = [...input]
@@ -263,7 +266,7 @@ function formatOutput(output) {
     let formattedOutput = output.toString()
     let startPos
 
-    // if e and no decimal startPos is e pos -3, else it the decimal pos -3
+    // if e and no decimal, startPos is e pos -3, else it's decimal pos -3
     if(!formattedOutput.includes('.') && formattedOutput.includes('e')) {
         startPos = formattedOutput.indexOf('e') -3
     } else {
@@ -271,7 +274,7 @@ function formatOutput(output) {
         startPos =  decimalPosition > -1 ? decimalPosition -3 : formattedOutput.length -3  
     }
 
-    //chk for neg num as first char is -
+    //chk for neg num as first char would be -
     let endPos = isNaN(formattedOutput[0]) ? 1 : 0
     
     formattedOutput = [...formattedOutput]
@@ -282,7 +285,3 @@ function formatOutput(output) {
 
     return formattedOutput.join('')
 }
-
-
-
-
