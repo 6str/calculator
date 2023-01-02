@@ -14,11 +14,16 @@ JavaScript can do a pretty bad job of evaluating some expressions.
 e.g.  
 * .3 x 10 = 3  
 * .3 ÷ .1 = 2.9999999999999996  
-  
+
 </br>
-<img src="images/screenshotVid.png" height="400" /><img src="images/screenshot.png" height="400" />  
+
+|||
+|:-:|:-:|
+|<img src="images/screenshotVid.png" height="400" />|<img src="images/screenshot.png" height="400" />|
+
 </br>
 </br>
+
 # credits  
 [Tutorial: Build a Calculator App in HTML, CSS & JavaScript 2022](https://www.youtube.com/watch?v=_x8mNUBhLSk) by [Tyler Potts](https://www.youtube.com/@TylerPotts)  
 
