@@ -16,7 +16,7 @@ e.g.
 * .3 ÷ .1 = 2.9999999999999996  
   
 </br>
-<img src="images/screenshotVid.png" height="400" />&nbsp;&nbsp;<img src="images/screenshot.png" height="400" />  
+<img src="images/screenshotVid.png" height="400" /><img src="images/screenshot.png" height="400" />  
 </br>
 </br>
 # credits  
